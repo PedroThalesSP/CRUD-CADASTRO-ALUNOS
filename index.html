@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo"></div>
+                <div>
+                    <h1>Cadastro de Alunos</h1>
+                    <div class="subtitle">Sistema escolar conectado ao BD local</div>
+                </div>
+            </div>
+            <button id="btn-cadastrar" class="btn-cadastrar" data-action="open-create-modal">+ Novo aluno</button>
+        </header>
+
+        <section class="card">
+            <div class="toolbar">
+                <div class="search">
+                    <input type="text" placeholder="Pesquisar por nome ou matrícula..." data-bind="search-input">
+                </div>
+                <select data-bind="filter-turma">
+                    <option value="">Todas as turmas</option>
+                    <option>1º Ano A</option>
+                    <option>1º Ano B</option>
+                    <option>2º Ano A</option>
+                </select>
+                <select data-bind="filter-status">
+                    <option value="">Todas as situações</option>
+                    <option value="ativo">Ativo</option>
+                    <option value="transferido">Transferido</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+                <button class="btn secondary" data-action="refresh">Atualizar</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Matrícula</th>
+                            <th>Nome</th>
+                            <th>Turma</th>
+                            <th>Série</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody data-ref="tbody">
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td id="matricula">2025001</td>
+                            <td id="nome">Ana Paula</td>
+                            <td id="ano">1º Ano A</td>
+                            <td id="nivel-escolar">Ensino Médio</td>
+                            <td id="situacao"><span class="badge success">Ativo</span></td>
+                            <td class="actions">
+                                <button id="editar" class="icon-btn" data-action="edit">✏️</button>
+                                <button id="deletar" class="icon-btn" data-action="delete">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="empty hidden" data-state="empty">
+                    Nenhum aluno cadastrado.
+                </div>
+            </div>
+
+            <!-- Paginação -->
+            <div class="pagination">
+                <div class="rows" data-ref="rows-info">Mostrando 0</div>
+                <div class="pager">
+                    <button data-action="prev-page">◀</button>
+                    <span data-ref="page">1 / 1</span>
+                    <button data-action="next-page">▶</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <dialog id="dialog-form" data-ref="dialog">
+        <form method="dialog" class="modal" data-ref="form">
+            <div class="modal-header">
+                <h2>Novo aluno</h2>
+                <button value="cancel">✖</button>
+            </div>
+            <div class="modal-body">
+                <label>Matrícula</label>
+                <input type="text" name="matricula" required />
+
+                <label>Nome completo</label>
+                <input type="text" name="nome" required />
+
+                <label>Turma</label>
+                <input type="text" name="turma" placeholder="Ex.: 1º Ano A" required />
+
+                <label>Série</label>
+                <select name="serie" required>
+                    <option value="">Selecione</option>
+                    <option>Ensino Fundamental</option>
+                    <option>Ensino Médio</option>
+                </select>
+
+                <label>Situação</label>
+                <select name="status" required>
+                    <option value="ativo">Ativo</option>
+                    <option value="transferido">Transferido</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" value="cancel">Cancelar</button>
+                <button class="btn" value="confirm" data-action="save">Salvar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Toasts -->
+    <div class="toasts" data-ref="toasts"></div>
+</body>
+<script src="/js/app.js" defer></script>
+
+</html>
