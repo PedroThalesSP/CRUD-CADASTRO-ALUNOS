@@ -87,11 +87,11 @@
         </section>
     </div>
 
-    <dialog id="dialog-form" data-ref="dialog">
+    <dialog id="formualario-modal" data-ref="dialog">
         <form method="dialog" class="modal" data-ref="form">
             <div class="modal-header">
                 <h2>Novo aluno</h2>
-                <button value="cancel">✖</button>
+                <button id="fechar">✖</button>
             </div>
             <div class="modal-body">
                 <label>Matrícula</label>
@@ -118,8 +118,8 @@
                 </select>
             </div>
             <div class="modal-footer">
-                <button class="btn secondary" value="cancel">Cancelar</button>
-                <button class="btn" value="confirm" data-action="save">Salvar</button>
+                <button id="cancelar" class="btn secondary" value="cancel">Cancelar</button>
+                <button id="salvar" class="btn" value="confirm" data-action="save">Salvar</button>
             </div>
         </form>
     </dialog>

@@ -1,7 +1,17 @@
 const abreModal = document.getElementById("btn-cadastrar")
-console.log(abreModal)
-
+const fechar = document.querySelector("#fechar")
+const modal = document.getElementById("formualario-modal")
+const cadastroNovoAluno = document.getElementsByClassName("matricula nome turma")
+const salvar = document.getElementById("salvar")
 
 abreModal.addEventListener('click', () =>{
-    alert('Esta funcionando!')
+    modal.showModal()
+})
+
+fechar.addEventListener("click",()=>{
+    modal.close()
+})
+
+salvar.addEventListenet("submit", ()=>{ // arrumar  um erro aqui
+    alert('aluno cadastrado')
 })
